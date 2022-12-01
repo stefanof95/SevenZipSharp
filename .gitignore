@@ -10,3 +10,5 @@ Backup/
 /[Ss]tage/**
 /TestResult.xml
 /coverage.xml
+
+.idea/

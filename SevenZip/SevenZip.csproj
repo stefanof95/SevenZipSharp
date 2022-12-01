@@ -15,6 +15,9 @@
     <RegisterForComInterop>false</RegisterForComInterop>
     <DefaultItemExcludes>$(DefaultItemExcludes);sfx\*</DefaultItemExcludes>
     <Configurations>Debug;Release;LiteDebug;LiteRelease</Configurations>
+    <PackageId>stefanof95.SevenZipSharp</PackageId>
+    <PackageVersion>1.5.1</PackageVersion>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DefineConstants>TRACE;DEBUG;UNMANAGED;SFX</DefineConstants>
