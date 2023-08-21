@@ -322,10 +322,9 @@ namespace SevenZip
 
         private void OnCompressing(ProgressEventArgs e)
         {
-            if (Compressing != null)
-            {
-                Compressing(this, e);
-            }
+            Compressing?.Invoke(this, e);
+            if (e.Cancel)
+                Canceled = true;
         }
 
         private void OnFileCompressionFinished(EventArgs e)
@@ -342,7 +341,13 @@ namespace SevenZip
 
         public void SetTotal(ulong total) {}
 
-        public void SetCompleted(ref ulong completeValue) {}
+        public void SetCompleted(ref ulong completeValue)
+        {
+            if (Canceled)
+            {
+                throw new SevenZipCompressionCanceledException();
+            }
+        }
 
         public int GetUpdateItemInfo(uint index, ref int newData, ref int newProperties, ref uint indexInArchive)
         {
