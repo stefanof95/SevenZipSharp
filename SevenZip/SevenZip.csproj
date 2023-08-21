@@ -16,7 +16,7 @@
     <DefaultItemExcludes>$(DefaultItemExcludes);sfx\*</DefaultItemExcludes>
     <Configurations>Debug;Release;LiteDebug;LiteRelease</Configurations>
     <PackageId>stefanof95.SevenZipSharp</PackageId>
-    <PackageVersion>1.5.1</PackageVersion>
+    <PackageVersion>1.6.2</PackageVersion>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
