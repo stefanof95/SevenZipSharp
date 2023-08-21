@@ -164,6 +164,8 @@ namespace SevenZip
         {
             if (HasExceptions)
             {
+                if (_exceptions.Count == 1 && _exceptions[0] is SevenZipCompressionCanceledException)
+                    throw new SevenZipCompressionCanceledException();
                 throw new SevenZipException(SevenZipException.USER_EXCEPTION_MESSAGE);
             }
         }
@@ -178,6 +180,11 @@ namespace SevenZip
         {
             if (hresult != (int)OperationResult.Ok || handler.HasExceptions)
             {
+                if (handler is ArchiveUpdateCallback && handler.Canceled && !handler.HasExceptions)
+                {
+                    AddException(new SevenZipCompressionCanceledException());
+                    return;
+                }
                 if (!handler.HasExceptions)
                 {
                     if (hresult < -2000000000)

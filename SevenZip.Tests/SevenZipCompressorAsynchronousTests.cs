@@ -201,6 +201,24 @@
                 Assert.IsTrue(extractor.ArchiveFileNames.Contains("tar.tar"));
             }
         }
+        
+        [Test]
+        public void CompressFilesAsyncWithCancellationTest()
+        {
+            var compressor = new SevenZipCompressor { DirectoryStructure = false };
+            compressor.Compressing += Compressor_Compressing;
+            var task = compressor.CompressFilesAsync(TemporaryFile, @"TestData\zip.zip", @"TestData\tar.tar");
+
+            Assert.ThrowsAsync<SevenZipCompressionCanceledException>(async () => { await task; });            
+        }
+
+        private void Compressor_Compressing(object sender, ProgressEventArgs e)
+        {
+            if (e.PercentDone > 50)
+            {
+                e.Cancel = true;
+            }
+        }
 
         [Test]
         public async Task CompressDirectoryAsync()
