@@ -16,8 +16,10 @@
     <DefaultItemExcludes>$(DefaultItemExcludes);sfx\*</DefaultItemExcludes>
     <Configurations>Debug;Release;LiteDebug;LiteRelease</Configurations>
     <PackageId>stefanof95.SevenZipSharp</PackageId>
-    <PackageVersion>1.5.1</PackageVersion>
+    <PackageVersion>1.5.2</PackageVersion>
     <IsPackable>true</IsPackable>
+    <AssemblyVersion>1.5.2.0</AssemblyVersion>
+    <FileVersion>1.5.2.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DefineConstants>TRACE;DEBUG;UNMANAGED;SFX</DefineConstants>
